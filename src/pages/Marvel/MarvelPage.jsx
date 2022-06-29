@@ -1,7 +1,8 @@
 import React from "react";
+import HeroesList from "../../components/HeroesList";
 
 const MarvelPage = () => {
-  return <div>MarvelPage</div>;
+  return <HeroesList publisher="Marvel Comics"></HeroesList>;
 };
 
 export default MarvelPage;

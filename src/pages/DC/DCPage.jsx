@@ -1,7 +1,8 @@
 import React from "react";
+import HeroesList from "../../components/HeroesList";
 
 const DCPage = () => {
-  return <div>DCPage</div>;
+  return <HeroesList publisher="DC Comics" />;
 };
 
 export default DCPage;
