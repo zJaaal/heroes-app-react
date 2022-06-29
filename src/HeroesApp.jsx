@@ -6,6 +6,8 @@ import {
   Typography,
   Button,
   Drawer,
+  ThemeProvider,
+  createTheme,
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/menu";
@@ -19,9 +21,15 @@ function HeroesApp() {
     setShowDrawer(!showDrawer);
   };
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   return (
-    <div>
-      <Drawer anchor={"left"} open={showDrawer}>
+    <ThemeProvider theme={darkTheme}>
+      <Drawer anchor={"left"} open={showDrawer} color="primary">
         <AppDrawer toggleDrawer={toggleDrawer} />
       </Drawer>
       <Box sx={{ flexGrow: 1 }}>
@@ -44,7 +52,7 @@ function HeroesApp() {
           </Toolbar>
         </AppBar>
       </Box>
-    </div>
+    </ThemeProvider>
   );
 }
 
