@@ -17,17 +17,27 @@ const AppDrawer = ({ toggleDrawer }) => {
   return (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
-        {["Home", "Close", "DC", "Marvel"].map((text) => (
+        <ListItem disablePadding>
+          <ListItemButton href="/">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <CloseIcon />
+            </ListItemIcon>
+            <ListItemText primary="Close" />
+          </ListItemButton>
+        </ListItem>
+        {["DC", "Marvel"].map((text) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
-                {text === "Close" ? (
-                  <CloseIcon />
-                ) : text === "Home" ? (
-                  <HomeIcon />
-                ) : (
-                  <PeopleAltIcon />
-                )}
+                <PeopleAltIcon />
               </ListItemIcon>
               {/* Here goes the link  */}
               <ListItemText primary={text} />
