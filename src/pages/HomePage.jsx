@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Paper } from "@mui/material";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <h3>Home Page</h3>;
 };
 
 export default HomePage;
