@@ -8,17 +8,20 @@ import {
   Drawer,
 } from "@mui/material";
 
-import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/menu";
 import AppDrawer from "../components/AppDrawer";
 import { useState } from "react";
 
 function NavBar() {
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const navigate = useNavigate();
   const toggleDrawer = () => {
     setShowDrawer(!showDrawer);
+  };
+
+  const handleLogout = () => {
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -45,9 +48,9 @@ function NavBar() {
             <Typography variant="text" component="div" mb={0.3}>
               Jalinson
             </Typography>
-            <Link to="/login">
-              <Button color="inherit">Login</Button>
-            </Link>
+            <Button color="inherit" onClick={handleLogout}>
+              Log out
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>
