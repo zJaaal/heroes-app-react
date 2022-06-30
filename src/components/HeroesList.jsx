@@ -7,16 +7,19 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import getHeroesByPublisher from "../actions/getHeroByPublisher";
 
 const HeroesList = ({ publisher }) => {
   const [heroesList, setHeroesList] = useState([{}]);
-
+  const navigate = useNavigate();
+  const handleNavigate = (id) => {
+    navigate(`/hero/${id}`);
+  };
   useEffect(() => {
     setHeroesList(getHeroesByPublisher(publisher));
   }, []);
-
   return (
     <Grid
       container
@@ -45,7 +48,14 @@ const HeroesList = ({ publisher }) => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Learn More</Button>
+                  <div>
+                    <Button
+                      size="small"
+                      onClick={() => handleNavigate(hero.id)}
+                    >
+                      Learn More
+                    </Button>
+                  </div>
                 </CardActions>
               </Card>
             </Grid>

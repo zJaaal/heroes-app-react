@@ -18,3 +18,7 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+
+.hero-image {
+  border-radius: 24px;
+}

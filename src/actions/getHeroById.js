@@ -1,3 +1,9 @@
-const getHeroById = (id) => {};
+import { heroes } from "../data/heroes";
+
+const getHeroById = (id = "") => {
+  if (!id.length) return null;
+
+  return heroes.find((hero) => hero.id === id);
+};
 
 export default getHeroById;

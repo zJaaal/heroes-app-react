@@ -1,9 +1,10 @@
 import React from "react";
 
 import { Paper } from "@mui/material";
+import HeroesList from "../components/HeroesList";
 
 const HomePage = () => {
-  return <h3>Home Page</h3>;
+  return <HeroesList publisher={null} />;
 };
 
 export default HomePage;
