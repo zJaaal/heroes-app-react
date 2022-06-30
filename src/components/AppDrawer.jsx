@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import SearchIcon from "@mui/icons-material/Search";
 
 const AppDrawer = ({ toggleDrawer }) => {
   return (
@@ -49,6 +50,16 @@ const AppDrawer = ({ toggleDrawer }) => {
             </Link>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <Link to="/search">
+            <ListItemButton>
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+              <ListItemText primary="Search" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
       </List>
     </Box>
   );

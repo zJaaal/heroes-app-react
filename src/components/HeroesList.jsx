@@ -1,23 +1,11 @@
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import HeroCard from "./HeroCard";
 import getHeroesByPublisher from "../actions/getHeroByPublisher";
 
 const HeroesList = ({ publisher }) => {
-  const navigate = useNavigate();
-  const handleNavigate = (id) => {
-    navigate(`/hero/${id}`);
-  };
-
   //Same note as HeroPage.jsx
   const heroesList = useMemo(
     () => getHeroesByPublisher(publisher),
@@ -32,38 +20,7 @@ const HeroesList = ({ publisher }) => {
       justifyContent="center"
     >
       {heroesList.length ? (
-        heroesList.map((hero) => {
-          return (
-            <Grid item xs={3} mt={2} key={hero.id} className="hero-card">
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="400"
-                  src={`../../assets/${hero.id}.jpg`}
-                  alt={`${hero.superhero}`}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {hero.superhero}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {`Literally ${hero.superhero} bro`}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <div>
-                    <Button
-                      size="small"
-                      onClick={() => handleNavigate(hero.id)}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </CardActions>
-              </Card>
-            </Grid>
-          );
-        })
+        heroesList.map((hero) => <HeroCard hero={hero} />)
       ) : (
         <Typography variant="body">Loading...</Typography>
       )}
