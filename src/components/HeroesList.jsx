@@ -7,19 +7,22 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import getHeroesByPublisher from "../actions/getHeroByPublisher";
 
 const HeroesList = ({ publisher }) => {
-  const [heroesList, setHeroesList] = useState([{}]);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
     navigate(`/hero/${id}`);
   };
-  useEffect(() => {
-    setHeroesList(getHeroesByPublisher(publisher));
-  }, []);
+
+  //Same note as HeroPage.jsx
+  const heroesList = useMemo(
+    () => getHeroesByPublisher(publisher),
+    [publisher]
+  );
   return (
     <Grid
       container

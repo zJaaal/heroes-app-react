@@ -1,11 +1,18 @@
 import { Typography, Grid, Button } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 import getHeroById from "../actions/getHeroById";
 
 const HeroPage = () => {
   const { heroId } = useParams();
+
   const navigate = useNavigate();
-  const hero = getHeroById(heroId);
+
+  // This is kind of innecessary because we are not using states and nothing is re rendering the component, so thats not required
+  // Anyways the getHeroById function its not doing anything time/space consuming
+  // So yeah this is something for just an example
+
+  const hero = useMemo(() => getHeroById(heroId), [heroId]);
 
   const handleReturn = () => {
     navigate(-1);
