@@ -1,19 +1,35 @@
-import { Typography, Grid } from "@mui/material";
-import { Container } from "@mui/system";
-import React from "react";
-import { useParams } from "react-router-dom";
+import { Typography, Grid, Button } from "@mui/material";
+import { useParams, useNavigate } from "react-router-dom";
 import getHeroById from "../actions/getHeroById";
 
 const HeroPage = () => {
   const { heroId } = useParams();
-
+  const navigate = useNavigate();
   const hero = getHeroById(heroId);
+
+  const handleReturn = () => {
+    navigate(-1);
+  };
   return (
-    <Grid container pt={2} pb={2}>
+    <Grid container pt={2} pb={2} className="hero-page">
       {!hero ? (
-        <Typography variant="h5" align="center">
-          Couldn't find any hero with that id
-        </Typography>
+        <>
+          <Grid item xs={12}>
+            <Typography variant="h5" align="center">
+              Couldn't find any hero with that id
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            pt={2}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <Button variant="outlined" onClick={handleReturn}>
+              Go Back
+            </Button>
+          </Grid>
+        </>
       ) : (
         <>
           <Grid item xs={5}>
@@ -34,6 +50,11 @@ const HeroPage = () => {
             ${hero.publisher} his first appareance was in the comic 
             ${hero.first_appearance} starring characters as: 
             ${hero.characters}`}</Typography>
+            <Grid pt={2}>
+              <Button variant="outlined" onClick={handleReturn}>
+                Go Back
+              </Button>
+            </Grid>
           </Grid>
         </>
       )}

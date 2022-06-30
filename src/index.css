@@ -22,3 +22,42 @@ a:active {
 .hero-image {
   border-radius: 24px;
 }
+
+.hero-card {
+  position: relative;
+  animation-name: hero-card;
+  animation-duration: 2s;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-page {
+  animation-name: hero-page;
+  animation-duration: 2s;
+}
+
+.hero-card:hover {
+  transform: scale(1.05);
+}
+
+@keyframes hero-card {
+  from {
+    top: 100px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes hero-page {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

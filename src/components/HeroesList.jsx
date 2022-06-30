@@ -31,7 +31,7 @@ const HeroesList = ({ publisher }) => {
       {heroesList.length ? (
         heroesList.map((hero) => {
           return (
-            <Grid item xs={3} mt={2} key={hero.id}>
+            <Grid item xs={3} mt={2} key={hero.id} className="hero-card">
               <Card>
                 <CardMedia
                   component="img"
