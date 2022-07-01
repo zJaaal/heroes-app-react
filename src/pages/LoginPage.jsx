@@ -1,16 +1,28 @@
 import { Container } from "@mui/system";
 import { Button, Typography, Grid, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../auth/AuthContext";
+import useForm from "../hooks/useForm";
+import { types } from "../types/types";
 
 const LoginPage = () => {
+  const { user, dispatch } = useContext(AuthContext);
+  const [{ name }, handleInputChange] = useForm({ name: "" });
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const info = name.trim();
+    if (!info.length) return;
+    console.log(info);
+    dispatch({ type: types.login, payload: { name: info } });
+
     navigate("/", { replace: true });
   };
   return (
     <Container>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} component="form" onSubmit={handleLogin}>
         <Grid item xs={12}>
           <Typography variant="h4" pt={2}>
             Login
@@ -21,15 +33,14 @@ const LoginPage = () => {
             required
             id="outlined-required"
             label="Name"
-            defaultValue="Jalinson"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={handleInputChange}
           />
         </Grid>
         <Grid item xs={12}>
-          <Button
-            variant="contained"
-            sx={{ marginBottom: 2 }}
-            onClick={handleLogin}
-          >
+          <Button variant="contained" sx={{ marginBottom: 2 }} type="submit">
             Login
           </Button>
         </Grid>

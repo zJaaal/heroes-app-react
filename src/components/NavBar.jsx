@@ -11,9 +11,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/menu";
 import AppDrawer from "../components/AppDrawer";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../auth/AuthContext";
+import { types } from "../types/types";
 
 function NavBar() {
+  const { user, dispatch } = useContext(AuthContext);
   const [showDrawer, setShowDrawer] = useState(false);
   const navigate = useNavigate();
   const toggleDrawer = () => {
@@ -21,6 +24,8 @@ function NavBar() {
   };
 
   const handleLogout = () => {
+    dispatch({ type: types.logout });
+
     navigate("/login", { replace: true });
   };
 
@@ -46,7 +51,7 @@ function NavBar() {
               Heroes
             </Typography>
             <Typography variant="text" component="div" mb={0.3}>
-              Jalinson
+              {user.name}
             </Typography>
             <Button color="inherit" onClick={handleLogout}>
               Log out

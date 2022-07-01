@@ -1,4 +1,12 @@
-import { Grid, Typography, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  AppBar,
+  Toolbar,
+  IconButton,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -6,6 +14,7 @@ import queryString from "query-string";
 import useForm from "../hooks/useForm";
 import HeroCard from "../components/HeroCard";
 import getHeroesByName from "../actions/getHeroesByName";
+import { Menu } from "@mui/icons-material";
 
 const SearchPage = () => {
   const navigate = useNavigate();

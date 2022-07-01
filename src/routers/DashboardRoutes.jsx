@@ -17,7 +17,6 @@ const DashboardRoutes = () => {
           <Route exact path="marvel" element={<MarvelPage />} />
           <Route exact path="search" element={<SearchPage />} />
           <Route exact path="hero/:heroId" element={<HeroPage />} />
-          <Route exact path="search" element={<SearchPage />} />
 
           <Route exact path="/" element={<HomePage />} />
         </Routes>
