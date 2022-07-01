@@ -38,8 +38,8 @@ const AppDrawer = ({ toggleDrawer }) => {
           </ListItemButton>
         </ListItem>
         {["DC", "Marvel"].map((text) => (
-          <Link to={`/${text.toLowerCase()}`}>
-            <ListItem key={text} disablePadding>
+          <Link to={`/${text.toLowerCase()}`} key={text}>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleAltIcon />
