@@ -43,7 +43,7 @@ function NavBar() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-              onClick={() => setShowDrawer(!showDrawer)}
+              onClick={toggleDrawer}
             >
               <MenuIcon />
             </IconButton>
