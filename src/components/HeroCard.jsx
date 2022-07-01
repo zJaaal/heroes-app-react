@@ -16,7 +16,7 @@ const HeroCard = ({ hero }) => {
     navigate(`/hero/${id}`);
   };
   return (
-    <Grid item xs={3} mt={2} key={hero.id} className="hero-card">
+    <Grid item xs={3} mt={2} className="hero-card">
       <Card>
         <CardMedia
           component="img"

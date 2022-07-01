@@ -20,7 +20,7 @@ const HeroesList = ({ publisher }) => {
       justifyContent="center"
     >
       {heroesList.length ? (
-        heroesList.map((hero) => <HeroCard hero={hero} />)
+        heroesList.map((hero) => <HeroCard hero={hero} key={hero.id} />)
       ) : (
         <Typography variant="body">Loading...</Typography>
       )}
