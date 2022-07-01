@@ -19,16 +19,16 @@ const AppDrawer = ({ toggleDrawer }) => {
   return (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer}>
       <List>
-        <ListItem disablePadding>
-          <Link to="/">
+        <Link to="/">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItemButton>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
@@ -38,28 +38,27 @@ const AppDrawer = ({ toggleDrawer }) => {
           </ListItemButton>
         </ListItem>
         {["DC", "Marvel"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <Link to={`/${text.toLowerCase()}`}>
+          <Link to={`/${text.toLowerCase()}`}>
+            <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleAltIcon />
                 </ListItemIcon>
-                {/* Here goes the link  */}
                 <ListItemText primary={text} />
               </ListItemButton>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ))}
-        <ListItem disablePadding>
-          <Link to="/search">
+        <Link to="/search">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <SearchIcon />
               </ListItemIcon>
               <ListItemText primary="Search" />
             </ListItemButton>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );
