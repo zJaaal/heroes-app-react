@@ -10,16 +10,16 @@ const LoginPage = () => {
   const { user, dispatch } = useContext(AuthContext);
   const [{ name }, handleInputChange] = useForm({ name: "" });
   const navigate = useNavigate();
-
+  const route = localStorage.getItem("lastPath") || "/";
   const handleLogin = (e) => {
     e.preventDefault();
     const info = name.trim();
     if (!info.length) return;
-    console.log(info);
     dispatch({ type: types.login, payload: { name: info } });
 
-    navigate("/", { replace: true });
+    navigate(route, { replace: true });
   };
+
   return (
     <Container>
       <Grid container spacing={2} component="form" onSubmit={handleLogin}>
